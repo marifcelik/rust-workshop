@@ -103,9 +103,39 @@ fn main() {
     for num5 in (1..=3).rev() {
         println!("reversed number is {num5}")
     }
+
+    println!("fibonacci");
+    fibonacci(12);
+
+    println!("68 fahrenheit is {} celsius", fahrenheit_to_celcius(68));
 }
 
 // TODO: implement fibonacci and fahrenheit to celsius converter
 fn fibonacci(n: u32) {
+    if n == 1 {
+        print!("1");
+        return;
+    }
+    if n >= 2 {
+        print!("1 1");
+    }
 
+    let mut first = 1;
+    let mut second = 1;
+    let mut acx: u32;
+    
+    for _i in 2..n {
+        acx = first + second;
+        first = second;
+        second = acx;
+        print!(" {acx}");
+    }
+    println!("");
+}
+
+fn fahrenheit_to_celcius(degree: u32) -> f32 {
+    const DIVISION: f32 = 1.80;
+    const MINUS: u32 = 32;
+
+    (degree - MINUS) as f32 / DIVISION
 }
